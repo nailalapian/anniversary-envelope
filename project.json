@@ -1,0 +1,19 @@
+{
+  "overview": "A romantic anniversary greeting card where tapping a sealed envelope reveals a hidden message.",
+  "features": [
+    "Full-screen burgundy opening screen with a cursive anniversary headline",
+    "A red envelope with a gold wax seal that opens with an animation",
+    "A hidden romantic message revealed inside the envelope",
+    "Close the envelope to return to the sealed state",
+    "Centered, responsive layout for desktop and mobile"
+  ],
+  "category": "greeting-card",
+  "tags": [
+    "anniversary",
+    "greeting-card",
+    "romantic",
+    "animation",
+    "envelope"
+  ],
+  "last_updated": "2026-09-29T18:54:00.671Z"
+}

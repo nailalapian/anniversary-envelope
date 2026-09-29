@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/assets/fonts/InstrumentSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Handwriting face for the long letter body. Caveat.woff2 is bundled at
+   /assets/fonts/Caveat.woff2 so the letter renders in a real script face on
+   every platform; the cursive stack below is only a fallback. */
+@font-face {
+  font-family: "Caveat";
+  src: url("/assets/fonts/Caveat.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-display: "Instrument Serif", Georgia, serif;
+    --font-body: "General Sans", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --font-hand: "Caveat", "Segoe Script", "Bradley Hand", "Brush Script MT",
+      cursive;
+    --radius: 0.625rem;
+
+    /* Velvet & Candlelight — deep burgundy stage */
+    --background: 0.17 0.075 20;
+    --foreground: 0.96 0.015 80;
+    --card: 0.23 0.085 22;
+    --card-foreground: 0.96 0.015 80;
+    --popover: 0.23 0.085 22;
+    --popover-foreground: 0.96 0.015 80;
+
+    /* Warm antique gold */
+    --primary: 0.74 0.12 82;
+    --primary-foreground: 0.17 0.075 20;
+
+    --secondary: 0.27 0.09 22;
+    --secondary-foreground: 0.96 0.015 80;
+    --muted: 0.27 0.09 22;
+    --muted-foreground: 0.78 0.03 70;
+
+    --accent: 0.74 0.12 82;
+    --accent-foreground: 0.17 0.075 20;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.96 0.015 80;
+
+    --border: 0.32 0.09 24;
+    --input: 0.32 0.09 24;
+    --ring: 0.74 0.12 82;
+
+    --chart-1: 0.74 0.12 82;
+    --chart-2: 0.55 0.16 25;
+    --chart-3: 0.65 0.1 60;
+    --chart-4: 0.45 0.12 20;
+    --chart-5: 0.88 0.08 90;
+
+    --sidebar: 0.2 0.08 21;
+    --sidebar-foreground: 0.96 0.015 80;
+    --sidebar-primary: 0.74 0.12 82;
+    --sidebar-primary-foreground: 0.17 0.075 20;
+    --sidebar-accent: 0.27 0.09 22;
+    --sidebar-accent-foreground: 0.96 0.015 80;
+    --sidebar-border: 0.32 0.09 24;
+    --sidebar-ring: 0.74 0.12 82;
+
+    /* Envelope, wax seal, and letter surfaces */
+    --envelope: 0.42 0.16 22;
+    --envelope-deep: 0.34 0.14 22;
+    --envelope-flap: 0.38 0.15 22;
+    --wax: 0.93 0.035 88;
+    --wax-deep: 0.8 0.05 82;
+    --wax-light: 0.98 0.02 92;
+    --letter: 0.97 0.02 80;
+    --letter-foreground: 0.28 0.06 25;
+
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Velvet stage: candlelight halo pooled behind the envelope + corner vignette */
+  .bg-velvet {
+    background: radial-gradient(
+        ellipse 70% 55% at 50% 46%,
+        oklch(0.28 0.1 24 / 0.9) 0%,
+        oklch(0.2 0.085 21 / 0.55) 42%,
+        transparent 72%
+      ),
+      radial-gradient(
+        ellipse 130% 100% at 50% 50%,
+        oklch(0.19 0.08 21) 0%,
+        oklch(0.17 0.075 20) 55%,
+        oklch(0.12 0.06 18) 100%
+      );
+  }
+
+  .text-glow {
+    text-shadow: 0 0 22px oklch(0.96 0.015 80 / 0.3), 0 2px 12px
+      oklch(0.1 0.05 20 / 0.65);
+  }
+
+  .bg-gradient-seal {
+    background: radial-gradient(
+      circle at 34% 28%,
+      oklch(0.99 0.015 92) 0%,
+      oklch(0.94 0.03 88) 38%,
+      oklch(0.86 0.045 84) 78%,
+      oklch(0.78 0.055 80) 100%
+    );
+  }
+
+  .bg-gradient-envelope {
+    background: linear-gradient(
+      160deg,
+      oklch(0.46 0.17 23) 0%,
+      oklch(0.42 0.16 22) 55%,
+      oklch(0.34 0.14 22) 100%
+    );
+  }
+
+  .bg-gradient-flap {
+    background: linear-gradient(
+      180deg,
+      oklch(0.4 0.16 22) 0%,
+      oklch(0.34 0.14 22) 100%
+    );
+  }
+
+  /* Reverse face of the flap — slightly deeper so the lifted flap reads as
+     the underside of the paper rather than a flat repeat of the front. */
+  .bg-gradient-flap-back {
+    background: linear-gradient(
+      180deg,
+      oklch(0.3 0.12 21) 0%,
+      oklch(0.36 0.14 22) 100%
+    );
+  }
+
+  .perspective-envelope {
+    perspective: 1400px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
